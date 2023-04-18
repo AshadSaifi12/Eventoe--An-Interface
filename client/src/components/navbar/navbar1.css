@@ -1,0 +1,57 @@
+.navbar{
+    height: 70px;
+    background-color: #003580;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navContainer1{
+    width: 100%;
+    margin: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+  .navContainer1 > .homeul{
+    display: flex;
+font-size: larger;
+list-style-type: none;  
+justify-content: space-between;
+width: 100%;
+height: 100%;
+font-family: system-ui;
+  }
+  
+  .logo{
+    font-weight: 500;
+    font-size: xx-large;
+    margin-right: 80px;
+  }
+
+  .profileul{
+    width: inherit;
+    display: flex;
+    justify-content: end;
+    list-style: none;
+    font-size: larger;
+    justify-content: flex-start;
+    margin-left: 140px;
+    height: 100%;
+  }
+
+  .logout > #logoutbtn{
+    background-color: red;
+    padding: 3px 6px 3px 6px;
+    border-radius: 8px;
+    font-size: large;
+    list-style-type: none;
+    height: 78%;
+  }
+  
+  .logout{
+    width: inherit;
+    display: flex;
+    justify-content: end;
+    height: 100%;
+  }
