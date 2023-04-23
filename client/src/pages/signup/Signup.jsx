@@ -113,7 +113,7 @@ function Signup() {
 
   function handleChange(e) {
      setUserValue(e.target.value);
-    //sessionStorage.setItem("userValue",e.target.value)
+    sessionStorage.setItem("userValue",e.target.value)
   }
 
   useEffect(() => {
@@ -263,6 +263,7 @@ function Signup() {
               userValue
             }
           });
+          sessionStorage.setItem("userValue", "Employee")
           sessionStorage.setItem("username",e.target.name.value)
           sessionStorage.setItem("age",e.target.age.value)
           sessionStorage.setItem("phone",e.target.phone.value)
@@ -350,7 +351,7 @@ function Signup() {
                userValue
             }
           });
-
+          sessionStorage.setItem("userValue", "Comapny")
           sessionStorage.setItem("username",e.target.name.value)
           sessionStorage.setItem("phone",e.target.phone.value)
           sessionStorage.setItem("CIN_No",e.target.cin.value)
@@ -432,7 +433,7 @@ function Signup() {
             <label htmlFor="">Owner Mobile No.</label><br /><br />
             <input type="number" name="phone" id="" required /><br /><br />
             <label htmlFor="">Enter CIN No. </label><br /><br />
-            <input type="number" name="cin" id="" Length={21} required /><br /><br />
+            <input type="text" name="cin" id="" Length={21} required /><br /><br />
             <label htmlFor="">Description</label><br /><br />
             <textarea name="desc" id="" cols="57" rows="10" ></textarea><br /><br />
             <label htmlFor="">Office Address</label><br /><br />
@@ -501,4 +502,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default Signup

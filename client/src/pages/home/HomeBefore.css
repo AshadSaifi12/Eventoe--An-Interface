@@ -47,7 +47,9 @@ font-size: 40px;
 
 .bodyContact{
     display: flex;
-    margin: 10vw;
+    margin-left: 20vw;
+    margin-bottom: 10vh;
+    margin-top: 10vh;
 }
 
 .detailContactIn{
@@ -70,9 +72,6 @@ background-color: lightcoral;
     margin-right: -15vw;
 }
 
-#HomeL{
-    
-}
 
 .formContact{
     padding-top: 4vh;

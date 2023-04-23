@@ -4,6 +4,7 @@
 }
 #signup-heading, .signup-div{
     text-align: center;
+    padding: 1vh;
 }
 .inner-emp-form{
     display: block;

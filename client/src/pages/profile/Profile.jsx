@@ -3,7 +3,8 @@
 
 import React, { useEffect, useState } from 'react'
 import "./profile.css"
-import { useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 
@@ -238,7 +239,6 @@ function Profile() {
     }
 
 
-
     return (
 
         <div>
@@ -274,18 +274,18 @@ function Profile() {
                     {/* <input type="text" name="" value={userDetail.gender} id="" /><br /><br /><br /><br /> */}
                     <input type="text" name="" value={sessionStorage.getItem("gender")} id="" /><br /><br /><br /><br />
 
-                    <button id='updateBtn' type="button">Update</button>
+                    <Link id='updateBtn' to="/Update" type="button">Update</Link>
                 </form>
             </div>}
             {sessionStorage.getItem("userValue") === "Company" && <div className="com">
 
                 <span id='profile'>Hello! {sessionStorage.getItem("username")}</span>
-                <span id='profileSpan2' >Below is your personal detail</span>
+                <span id='Span2' >Below is your personal detail</span>
                 <hr />
                 <div className="mainbody">
                     <form action="" id='comform'>
                         <br />
-                        <label htmlFor="">Organization Name</label>
+                        <label  htmlFor="">Organization Name</label>
                         <input type="text" name="" value={sessionStorage.getItem("username")} id="" /><br /><br /><br /><br />
 
                         <label htmlFor="">CIN No.</label>
@@ -305,10 +305,11 @@ function Profile() {
                         <div className="descDiv">
                             <label id='desc' htmlFor="">Description</label>
                             {/* <textarea value={userDetail.desc} name="desc" id="" cols="57" rows="10" ></textarea><br /><br /><br /><br /> */}
-                            <textarea value={sessionStorage.getItem("desc")} name="desc" id="" cols="57" rows="10" ></textarea><br /><br /><br /><br />
+                            <textarea value={sessionStorage.getItem("desc")} name="desc" id="" cols="60" rows="5" ></textarea><br /><br /><br /><br />
                         </div>
-                        <br /><br />
-                        <button id='updateBtn' type="button">Update</button>
+                        <br /><br />            
+                               <Link id='updateBtn' to="/Update" type="button">Update</Link>
+ 
                     </form>
 
                     <div className="jobsSection">

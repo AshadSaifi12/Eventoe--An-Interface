@@ -87,7 +87,7 @@ const Home2 =()=>{
                 // console.log("my res : ",res)
                 if (flag === true) {
                     alert("Logged In Successfully!")
-
+                    sessionStorage.setItem("userValue", "Employee")
                     sessionStorage.setItem("username", res.username)
                     sessionStorage.setItem("age", res.age)
                     sessionStorage.setItem("phone", res.phone)
@@ -128,7 +128,7 @@ const Home2 =()=>{
                 // console.log("my res : ",res)
                 if (flag === true) {
                     alert("Logged In Successfully!")
-
+                    sessionStorage.setItem("userValue", "Company")
                     sessionStorage.setItem("username", res.username)
                     sessionStorage.setItem("phone", res.phone)
                     sessionStorage.setItem("CIN_No", res.CIN_No)
@@ -200,8 +200,9 @@ const Home2 =()=>{
                         <li id='homeli' ><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/" ></Link></li>
                         
                     </ul>
-                    <div className="endL" ><li><Link   id="logout2" style={{ color: '#FFF', textDecoration: 'none' }} to="/signup">SignUp</Link></li>
-                        <li className="li" onClick={()=>{HandleIsLogin()}}  style={{ color: '#FFF', textDecoration: 'none' }} id="logout"><Link style={{ color: '#FFF', textDecoration: 'none' }}>Login</Link></li>
+                    <div className="endL" >
+                        <li><Link   style={{ color: '#FFF', textDecoration: 'none' }} id="logout2"  to="/signup">SignUp</Link></li>
+                        <li className="li" onClick={()=>{HandleIsLogin()}} ><Link   style={{ color: '#FFF', textDecoration: 'none' }} id="logout2">Login</Link></li>
                     </div>
                 </div>
             </div>
@@ -235,8 +236,7 @@ const Home2 =()=>{
                         <img src={address}/>
                         <div className="detailContactInText"> <h1>Our Office Address</h1><br/>
                         <p>.
-                                1, Narpat Niwas,Opposite Vyas
-                                Colony,Airforce Road, Air Force Area, Jodhpur, Rajasthan 342001
+                            Noida Sector 82 near NSEZ Phase II Uttar Pradesh
                                 </p>
                         </div>
 
@@ -284,4 +284,4 @@ const Home2 =()=>{
     )
 }
 
-export default Home2;
+export default Home2;
