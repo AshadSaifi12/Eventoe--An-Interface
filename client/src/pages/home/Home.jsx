@@ -12,7 +12,8 @@ import {
   faMailReplyAll,
   faSearch,
   faLocation,
-  faMapLocation
+  faMapLocation,
+  faSleigh
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -30,6 +31,15 @@ function Home() {
   var location = useLocation();
   // const data = location.state.formData;
   // console.log("formData : ", data, location.state.userValue)
+
+  const date1=new Date();
+  const dateMonth=date1.getMonth()+1
+  const dateDay=date1.getDate();
+  const dateYear=date1.getFullYear();
+
+  console.log(dateMonth,dateDay,dateYear)
+
+
 
   const page = "home";
 
@@ -82,7 +92,81 @@ function Home() {
   console.log("articles", articles, articles.length)
   articles.map(ele => {
     console.log("jobs bro ",ele.jobs)});
+    let isExpire=""
 
+    articles.map(article =>{
+   
+      article.jobs.map(job =>{
+        const dateStart=job.startDate;
+        const dateEnd=job.endDate;
+        let DateyearStart=""
+        let DateyearEnd =""
+        let DateMonthStart=""
+        let DateMonthEnd =""
+        let DateDayStart=""
+        let DateDayEnd =""
+                            console.log(job.workName)
+        for(let i=0;i<3;i++){
+          if(i===0){
+            var dateStart2=""
+            var dateEnd2=""
+            for(let i=0;i<4;i++){
+              dateStart2=dateStart2 +dateStart[i]
+              dateEnd2=dateEnd2 + dateEnd[i]
+            }
+            DateyearStart=dateStart2;
+            DateyearEnd=dateStart2;
+          }
+          else if(i===1){
+            dateStart2="";
+            dateEnd2="";
+             for(let i=5;i<7;i++){
+              dateStart2=dateStart2 +dateStart[i]
+              dateEnd2=dateEnd2 +dateEnd[i]
+            }
+            DateMonthStart=dateStart2;
+            DateMonthEnd=dateEnd2;
+          }
+          else{
+            dateStart2="";
+            dateEnd2="";
+            for(let i=8;i<10;i++){
+              dateStart2=dateStart2 +dateStart[i]
+              dateEnd2=dateEnd2 +dateEnd[i]
+            }
+            DateDayStart=dateStart2;
+            DateDayEnd=dateEnd2;
+          }
+        
+        }
+
+        if(DateyearEnd<=dateYear){
+          if(DateMonthEnd<dateMonth){
+            console.log("Expired")
+            job.isExpired="EXPIRED";
+          }
+          else if(DateMonthEnd==dateMonth){
+            if(DateDayStart<dateDay){
+              console.log("Expired")
+              job.isExpired="EXPIRED";
+            }
+            else{                                  ///Expired Condition
+              console.log("Accepted")
+              job.isExpired="ACTIVE";
+            }
+          }
+          else{
+            console.log("Accepted")
+            job.isExpired="ACTIVE";
+          }
+          
+        }
+        else{
+          console.log("Accepted")
+          job.isExpired="ACTIVE";
+        }
+      });
+    });
   return (
     <div >
       {/* <Navbar page={page} name={location.state.userValue} userDetail={data}/> */}
@@ -131,7 +215,7 @@ function Home() {
                       <select value={articleName} onChange={handleChange}>
                         <option value="">Choose jobs</option>
                         {article.jobs.map( option => (
-                          <option value={option.workName}>{option.workName}</option>
+                          <option value={option.workName}>{option.workName }</option>
                         ))}
                       </select></h3>
                     {toggle && article.jobs.map(job => (
@@ -151,7 +235,13 @@ function Home() {
                         </div>
                         <div className="amountPaid">
                           <label htmlFor="">Paid by </label>
-                          <input type="text" name="" value={job.amountPaid} id="" />
+                          
+                        </div>
+                        
+                        <div className="amountPaid">
+                        <h3 id="h3" >{job.isExpired}</h3>
+                       
+
                         </div>
                       </div>
                       

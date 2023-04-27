@@ -201,8 +201,8 @@ const Home2 =()=>{
                         
                     </ul>
                     <div className="endL" >
-                        <li><Link   style={{ color: '#FFF', textDecoration: 'none' }} id="logout2"  to="/signup">SignUp</Link></li>
-                        <li className="li" onClick={()=>{HandleIsLogin()}} ><Link   style={{ color: '#FFF', textDecoration: 'none' }} id="logout2">Login</Link></li>
+                        <li><Link    id="logout2"  to="/signup">SignUp</Link></li>
+                        <li className="li" onClick={()=>{HandleIsLogin()}} ><Link    id="logout2">Login</Link></li>
                     </div>
                 </div>
             </div>

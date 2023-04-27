@@ -28,29 +28,22 @@
   word-spacing: 0px;
 }
 
-#logout{
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  padding: 5px;
-  font-size: larger;
-  border: solid 1px black;
-  background-color: red;
-  margin-right: 2vw;
-  margin-top: -6px;
-}
 
 #logout2{
-  color: rgb(255, 255, 255);
+  color: #003580;
   text-decoration: none;
-  padding: 5px;
+  padding: 9px;
   font-size: larger;
+  border-radius: 5px;
   border: solid 1px black;
-  background-color: red;
+  font-weight: bold;
+  background-color: white;
   margin-right: 2vw;
   margin-top: 2vh;
 }
 
 .endL{
   display: flex;
+list-style: none;
   
 }

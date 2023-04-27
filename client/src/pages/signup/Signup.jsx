@@ -163,9 +163,8 @@ function Signup() {
 
     }
 
-
     if (startDate[8] + startDate[9] <= endDate[8] + endDate[9] && startDate[5] + startDate[6] <= endDate[5] + endDate[6]) {
-      setWorkDetail(workDetail => [...workDetail, { workName: jobName, days: days, startDate: startDate, endDate: endDate, amountPaid: amountPaid }])
+      setWorkDetail(workDetail => [...workDetail, { workName: jobName, days: days, startDate: startDate, endDate: endDate, amountPaid: amountPaid,isExpired:false }])
       setSelectedOption(false)
       if (workValue === "other") {
         setInputWorkName("");
@@ -351,7 +350,7 @@ function Signup() {
                userValue
             }
           });
-          sessionStorage.setItem("userValue", "Comapny")
+          sessionStorage.setItem("userValue", "Company")
           sessionStorage.setItem("username",e.target.name.value)
           sessionStorage.setItem("phone",e.target.phone.value)
           sessionStorage.setItem("CIN_No",e.target.cin.value)

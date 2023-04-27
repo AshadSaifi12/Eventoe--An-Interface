@@ -13,7 +13,9 @@ export const createArticle = async (req, res, next) => {
 export const getAllArticle = async (req, res, next) => {
   try {
     const articles = await Article.find();
+    
 
+    
     res.status(200).json(articles);
   } catch (err) {
     next(err);

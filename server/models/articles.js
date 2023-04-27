@@ -43,6 +43,10 @@ const ArticleSchema = new mongoose.Schema(
                 amountPaid:{
                   type:String,
                   required:true
+                },
+                isExpired:{
+                    type:Boolean,
+                    required:true
                 }
             }
         ]
