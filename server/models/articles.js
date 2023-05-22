@@ -44,6 +44,19 @@ const ArticleSchema = new mongoose.Schema(
                   type:String,
                   required:true
                 },
+                amountPaid:{
+                    type:String,
+                    required:true
+                  },
+                  jobAddress:{
+                    type:String,
+                    required:true
+                  },
+                aboutJob:{
+                    type:String,
+                    required:true
+                },
+
                 isExpired:{
                     type:Boolean,
                     required:true

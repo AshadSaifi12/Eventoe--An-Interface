@@ -1,9 +1,10 @@
+/* eslint-disable array-callback-return */
 // lines edited - 99 to 102 , 88
 // lines commented - 31 , 
 
 
 import React, { useState, useEffect } from 'react'
-import "./home.css";
+import "./css/home.css";
 import Navbar from '../../components/navbar/Navbar';
 import { useLocation, useParams } from 'react-router-dom'
 import {
@@ -37,7 +38,6 @@ function Home() {
   const dateDay=date1.getDate();
   const dateYear=date1.getFullYear();
 
-  console.log(dateMonth,dateDay,dateYear)
 
 
 
@@ -58,43 +58,88 @@ function Home() {
   function handleChange(e) {
     setToggle(true)
     setArticleName(e.target.value);
-    console.log("articleName", articleName,toggle)
+
     
 
   }
 
   useEffect(() => {
-    console.log("called")
+
     getArticles();
     setFlag(false)
-    console.log("is articles exist",articles)
+
    
 
 
   }, [flag])
 
   async function getArticles() {
-    console.log("hello")
+
 
     await fetch("/article/findAll").then(result => {
       // console.log("result : ", result)
       return result.json();
     }).then(res => {
-      console.log("my res : ", res)
+
 
       setArticles(res)
     })
 
   }
+var [articles2,setArticles2]=useState(articles)
+articles2=articles
+var [work2,setWork2]=useState([])
 
 
+//Search Logic
+  const handleSearch=(value)=>{
+    if(value==null || value==""){
+      setArticles2(articles)
+    }
+    else{
+      setArticles2([])
+      articles.map(ar =>{
+        if(ar.name.match(value)!=null || ar.address.match(value)!=null){
+          articles2.push(ar)
+        }
+      })
+      
+    }
+    // else{
+    //   setArticles2([])
+    //   articles.map(ar =>{
 
-  console.log("articles", articles, articles.length)
-  articles.map(ele => {
-    console.log("jobs bro ",ele.jobs)});
-    let isExpire=""
+    //     if(ar.name.match(value)!=null || ar.address.match(value)!=null || 
+    //     ar.name.match(value)!="" || ar.address.match(value)!="")
+    //     {
+          
+    //       articles2.push(ar)
+    //       console.log(ar)
+    //     }
+    //     else{
+    //       articles.map(ar =>{
+    //         articles2.push(ar)
+    //         setWork2([])
+    //         ar.jobs.map(job =>{
+    //           if(job.jobAddress.match(value) !=null ||job.jobAddress.match(value) !="" || 
+    //           job.workName.match(value)!=null||job.workName.match(value)!=""){
+    //               work2.push(job)
+    //           }
+    //         })
+    //         articles2.map(a =>{
+    //           if(a==ar){
+    //             a.push({jobs:work2})
+    //           }
+             
+    //         })
+            
+    //       })
+    //     }
+    //   })
+    // }
+  }
 
-    articles.map(article =>{
+    articles2.map(article =>{
    
       article.jobs.map(job =>{
         const dateStart=job.startDate;
@@ -105,7 +150,7 @@ function Home() {
         let DateMonthEnd =""
         let DateDayStart=""
         let DateDayEnd =""
-                            console.log(job.workName)
+                           
         for(let i=0;i<3;i++){
           if(i===0){
             var dateStart2=""
@@ -139,30 +184,35 @@ function Home() {
           }
         
         }
+        const date3 =DateDayStart +"/" + DateMonthStart + "/"+DateyearStart;
+       
+        job.dateStartFinal=date3
+        const date2 =DateDayEnd +"/" + DateMonthEnd + "/"+DateyearEnd;
+      
+        job.dateEndFinal=date2
 
         if(DateyearEnd<=dateYear){
           if(DateMonthEnd<dateMonth){
-            console.log("Expired")
+           
             job.isExpired="EXPIRED";
           }
           else if(DateMonthEnd==dateMonth){
-            if(DateDayStart<dateDay){
-              console.log("Expired")
+            if(DateDayEnd<dateDay){
+           
               job.isExpired="EXPIRED";
             }
             else{                                  ///Expired Condition
-              console.log("Accepted")
+           
               job.isExpired="ACTIVE";
             }
           }
           else{
-            console.log("Accepted")
+        
             job.isExpired="ACTIVE";
           }
           
         }
         else{
-          console.log("Accepted")
           job.isExpired="ACTIVE";
         }
       });
@@ -187,16 +237,19 @@ function Home() {
             <span><FontAwesomeIcon icon={faHome} />  {sessionStorage.getItem("address")}</span>
             {/* <img src="img/email.png" alt="" /> */}
           </div>
+          <hr></hr>
+          
         </div>
         <div className="sec2">
           <div className="work_input">
             <FontAwesomeIcon className='icon' icon={faSearch} />
-            <input type="text" placeholder='Search for a job... ' name="worktype" id="" />
+            
+            <input type="text" onChange={(e)=>{handleSearch(e.target.value)}} placeholder='Search for a job... ' name="worktype" id="" />
           </div>
           <div className="Articles">
-            {articles.map(article => (
+            { articles2.map(article => (
                 
-
+              
               <div className="article">
                 <div className="upper">
 
@@ -220,35 +273,58 @@ function Home() {
                       </select></h3>
                     {toggle && article.jobs.map(job => (
                         job.workName === articleName && 
-                        <div className="aboutJob">
-                        <div className="days">
+                     <div className="aboutJob">
+                       <div className='first'>
+                          <div className="days">
                           <label htmlFor="">For Days </label>
-                          <input type="number" name="" value={job.days} id="" />
+                          <br></br>
+                          <input value={job.days}></input>
                         </div>
                         <div className="startDate">
                           <label htmlFor="">Start-Date </label>
-                          <input type="text" name="" value={job.startDate} id="" />
+                          <br></br>
+                          <input value={job.dateStartFinal}></input>
                         </div>
                         <div className="endDate">
                           <label htmlFor="">End-Date </label>
-                          <input type="text" name="" value={job.endDate} id="" />
+                         <br></br>
+                          <input value={job.dateEndFinal}></input>
                         </div>
-                        <div className="amountPaid">
-                          <label htmlFor="">Paid by </label>
-                          
+                    </div>
+                 
+                    <div className='second'>
+                    <div className="amountPaid">
+                          <label htmlFor="">About Job </label><br></br>
+                          <textarea>{job.aboutJob}</textarea>
                         </div>
                         
                         <div className="amountPaid">
+                          <label htmlFor="">Paid by </label><br></br>
+                          <input value={job.amountPaid}></input>
+                        </div>
+                        
+                        <div className="jobAddress">
+                          <label htmlFor="">Address </label><br></br>
+                          <textarea>{job.jobAddress}</textarea>
+                        </div>
+                    </div>
+                       
+                        
+                        <div className="isExpired" id="isExpired">
                         <h3 id="h3" >{job.isExpired}</h3>
+                        <br/>
+                     
                        
 
                         </div>
+             
+                        
                       </div>
-                      
-              
                         
                     )) }
+                    
                   </div>
+                  
                 </div>
 
               </div>

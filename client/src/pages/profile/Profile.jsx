@@ -2,7 +2,7 @@
 // lines commented - 38, 40,  41
 
 import React, { useEffect, useState } from 'react'
-import "./profile.css"
+import "./css/profile.css"
 import { Navigate, useLocation } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar';
@@ -23,6 +23,8 @@ function Profile() {
     var [f2, setf2] = useState(false);
     var [f3, setf3] = useState(false);
     var [f4, setf4] = useState(false);
+    var [f5, setf5] = useState(false);
+    var [f6, setf6] = useState(false);
 
     var [jobsIndices, setJobsIndices] = useState([]);
 
@@ -30,6 +32,8 @@ function Profile() {
     var [startDate, setstartDate] = useState();
     var [endDate, setendDate] = useState();
     var [amountPaid, setAmountPaid] = useState(0);
+    var [aboutJob, setAboutJob] = useState("");
+    var [jobAddress, setjobAddress] = useState("");
 
 
     // var [userDetail, setUserDetail] = useState({});
@@ -94,10 +98,7 @@ function Profile() {
             label: "video editor",
             value: "video editor"
         },
-        {
-            label: "video editor",
-            value: "video editor"
-        },
+        
         {
             label: "accounting",
             value: "accounting"
@@ -187,28 +188,40 @@ function Profile() {
         }
 
     }
-
+    var d =new Date();
     function handleUpdate() {
 
         var jobName = workValue;
         if (workValue === "other") {
             jobName = inputWorkName;
         }
-        if (startDate[8] + startDate[9] <= endDate[8] + endDate[9] && startDate[5] + startDate[6] <= endDate[5] + endDate[6]) {
-            jobs.push({ workName: jobName, days: days, startDate: startDate, endDate: endDate, amountPaid: amountPaid });
-            console.log(jobs);
-            sessionStorage.setItem("work", JSON.stringify(jobs))
-            // 
-            setWorkValue("select work");
-            setShowNewJobDetail(false);
-            setShowInputBox(false);
-            setFlag(false);
-            setAddJob(false);
-            updateArticle();
+        if ((startDate[8] + startDate[9] <= endDate[8] + endDate[9] && startDate[5] + startDate[6] == endDate[5] + endDate[6]) || startDate[5] + startDate[6] < endDate[5] + endDate[6]) {
+
+            var diff = Math.abs(new Date(startDate) - new Date(endDate))
+            var dayDiff = diff / (1000 * 3600 * 24)
+
+            if (new Date(startDate) < d || dayDiff != days) {
+
+                alert("Invalid! startDate / select correct no. of days.")
+            }
+            else {
+
+                jobs.push({ workName: jobName, days: days, startDate: startDate, endDate: endDate, amountPaid: amountPaid,jobAddress:jobAddress, aboutJob:aboutJob,isExpired:false});
+                console.log(jobs);
+                sessionStorage.setItem("work", JSON.stringify(jobs))
+                // 
+                setWorkValue("select work");
+                setShowNewJobDetail(false);
+                setShowInputBox(false);
+                setFlag(false);
+                setAddJob(false);
+                updateArticle();
+            }
+
         }
         else {
             alert("please select valid Dates");
-        }
+        }
 
     }
     console.log(jobsIndices);
@@ -230,12 +243,14 @@ function Profile() {
         }
     }
 
-    if (f1 === true && f2 === true && f3 === true && f4 === true) {
+    if (f1 === true && f2 === true && f3 === true && f4 === true&& f5 === true && f6 === true) {
         setFlag(true);
         setf1(false);
         setf2(false);
         setf3(false);
         setf4(false);
+        setf5(false);
+        setf6(false);
     }
 
 
@@ -311,7 +326,7 @@ function Profile() {
                                <Link id='updateBtn' to="/Update" type="button">Update</Link>
  
                     </form>
-
+        
                     <div className="jobsSection">
 
                         <label htmlFor="">Jobs posted by you : </label><br /><br />
@@ -320,22 +335,36 @@ function Profile() {
                                 <div className="jobSection">
                                     <label>{job.workName} : </label><br /><br />
                                     <div className="otherDiv">
+                                        <div className='first'>
                                         <div className="daySection">
-                                            <label htmlFor="">For how many days </label><br />
+                                            <label htmlFor="">days</label><br />
                                             <input type="text" value={job.days} name="" id="" />
                                         </div>
                                         <div className="startDateSection">
-                                            <label htmlFor="">Start Date </label><br />
+                                            <label htmlFor="">Start-Date </label><br />
                                             <input type="text" value={job.startDate} name="" id="" />
                                         </div>
                                         <div className="endDateSection">
-                                            <label htmlFor="">End Date </label><br />
+                                            <label htmlFor="">End-Date </label><br />
                                             <input type="text" value={job.endDate} name="" id="" />
                                         </div>
                                         <div className="amountPaidSection">
                                             <label htmlFor="">Employee Paid By </label><br />
                                             <input type="text" value={job.amountPaid} name="" id="" /><br /><br />
                                         </div>
+                                        </div>
+                                        <div className='second'>
+                                        <div className="amountPaidSection">
+                                            <label htmlFor="">About-Job </label><br />
+                                            <textarea type="text" value={job.aboutJob} name="" id="" /><br /><br />
+                                        </div>
+                                        <div className="amountPaidSection">
+                                            <label htmlFor="">Job-Address</label><br />
+                                            <textarea type="text" value={job.jobAddress} name="" id="" /><br /><br />
+                                        </div>
+                                        </div>
+                                        {/* 
+                                         */}
                                     </div>
                                 </div>
                                 {showDeleteBtn &&
@@ -398,12 +427,24 @@ function Profile() {
                                         </div>
                                         <div className="amountPaidDiv">
                                             <label htmlFor="">Employee Paid By </label><br />
-                                            <input type="number" name="" id="" onChange={(e) => {
+                                            <input type="text" name="" id="" onChange={(e) => {
                                                 setAmountPaid(e.target.value)
                                                 setf4(true);
                                             }} /><br /><br />
-                                            <button id='addButton' disabled={!flag} type="button" onClick={handleUpdate}>Add</button>
-
+                                            <label htmlFor="">About Job</label><br />
+                                            <textarea type="text" name="" id="" onChange={(e) => {
+                                                setAboutJob(e.target.value)
+                                                setf5(true);
+                                            }} /><br /><br />
+                                            <label htmlFor="">Job Address</label><br />
+                                            <textarea type="text" name="" id="" onChange={(e) => {
+                                                setjobAddress(e.target.value)
+                                                setf6(true);
+                                            }} /><br /><br />
+                                            <div className='addButton'>
+                                            <button id='addButton' disabled={!flag} type="button" onClick={()=>{handleUpdate()}}>Add</button>
+                                            <button id='addButton2' type="button" onClick={()=>{window.location.reload(false)}}>Cancel</button>
+                                            </div>
                                         </div>
                                     </div>
                                 }

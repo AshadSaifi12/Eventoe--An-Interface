@@ -34,37 +34,39 @@
 .com , .emp{
     margin: 40px;
     flex-direction: column;
+    margin-top: 0vh;
 }
 
 #profile {
     padding: 0px 0px 15px 10px;
     font-size: xxx-large;
+    margin-top: 9vh;
 }
 
 #comform > label{
     display: inline-block;
     
-    font-size: x-large;
+    font-size: large;
     width: 300px;
 }
 
 #comform > input{
-    margin-left: 130px;
-    width: 350px;
-    height: 30px;
-    font-size: larger;
+    width: 20vw;
+height: 20px;
+font-size: medium;
+text-align: center;
 }
 .descDiv > textarea{
     margin-left: 130px;
     width: 350px;
    
-    font-size: larger;
+    font-size: medium;
 }
 
 #desc{
     display: inline-block;
-    font-size: x-large;
-    width: 300px;
+    font-size: large;
+    width:10vw;
 }
 .descDiv{
     display: flex;
@@ -84,35 +86,30 @@
     width: 68px;
 }
 
-.otherDiv{
-    display: flex;
-}
+
 
 .daySection{
     /* width: 140px; */
     margin-right: 3px;
 }
 
-.daySection > input{
-    width: 83%;
+.first input{
+    
+    padding-right: 2vh;
 }
-
+.second input{
+    padding-right: 2vh;
+    width: 20vh;
+}
 .startDateSection{
     /* width: 80px; */
     margin-right: 15px;
 }
 
 
-.endDateSection{
-    /* width: 80px; */
-    margin-right: 15px;
-}
 
 
 
-.amountPaidSection > input{
-    width: 80%;
-}
 
 .jobSection{
     border: solid 1px #878484;
@@ -139,6 +136,22 @@
     background-color: rgb(30 145 78);
     color: white;
     font-size: large;
+    margin-left: 1vh;
+}
+#addButton{
+    padding: 4px 6px 4px 6px;
+    border-radius: 5px;
+    background-color: rgb(30 145 78);
+    margin-left: 1vh;
+   
+}
+#addButton2{
+    padding: 4px 6px 4px 6px;
+    border-radius: 5px;
+    background-color:red;
+   margin-left: 5vh;
+   margin-right: 1vh;
+    
 }
 #deleteBtn {
     padding: 4px 6px 4px 6px;
@@ -146,6 +159,10 @@
     background-color: rgb(218, 54, 13);
     color: white;
     font-size: large;
+    
+}
+.addButton{
+    
 }
 
 .outerJobSection{
@@ -173,7 +190,9 @@
 .dayDiv > input, .amountPaidDiv > input {
     width: 110px;
 }
-
+.amountPaidDiv > textarea {
+    width: fit-content;
+}
 .mainbody{
     display: flex;
 }

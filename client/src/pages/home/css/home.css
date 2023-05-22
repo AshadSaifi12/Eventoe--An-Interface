@@ -4,17 +4,18 @@
 }
 .container{
     display: flex;
+    
 }
 .sec1{
     flex-basis: 20%;
-    margin: 10px;
-    border: 1px solid #9897a3;
-    height: fit-content;
+margin: 10px;
+border: 1px solid black;
+margin-top: 9vh;
 }
 .sec2{
     flex-basis: 65%;
     margin: 10px;
-    
+    margin-top: 9vh;
 }
 .detail_heading{
     font-weight: 100;
@@ -70,7 +71,7 @@
     width: fit-content;
     font-family: emoji;
     margin-bottom: 20px;
-    width: 45vw;
+    width: 57vw;
 }
 .upper{
        border: 1px solid #555;
@@ -148,8 +149,59 @@
     margin-top: 10px;
 }
 .aboutJob{
+    margin: 3px;
     margin-top: 40px;
-    display: flex;
+    border: solid 1.0px #003580;
+
+
     justify-content: space-around;
 }
 
+label{
+    font-weight: bold;
+}
+.search{
+    display: flex;
+}
+.search select{
+    margin-left: 10px;
+}
+.first{
+    display: flex;
+    margin-top: 2vh;
+}
+.first label{
+    padding-right: 1vh;
+    
+}
+.first input{
+    padding-right: 1vh;
+    margin-top: 1vh;
+    
+}
+.second textarea{
+    padding-right: 1vh;
+    margin-top: 1vh;
+}
+.second input{
+   
+    margin-top: 2vh;
+    
+}
+.second{
+    margin-top: 1vh;
+    display: flex;
+    margin-inline: 1vh;
+}
+.second div{
+    display: inline;
+    padding-inline: 22px;
+    margin-top: 2vh;
+}
+.first div{
+    padding-bottom: 12px;
+    padding-left: 21px;
+}
+#isExpired{
+    padding-left: 90%;
+}

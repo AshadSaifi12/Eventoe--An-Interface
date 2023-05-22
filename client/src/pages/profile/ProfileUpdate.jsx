@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "../../components/footer/footer.css"
-import "./ProfileUpdate.css"
+import "./css/ProfileUpdate.css"
 import Navbar from "../../components/navbar/Navbar"
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -8,14 +8,14 @@ export default function Update() {
     const navigate = useNavigate();
     const [username,SetUsername]=useState(sessionStorage.getItem("username"));
     const [age,Setage]=useState(sessionStorage.getItem("age"));
-    const [phone,SetPhone]=useState(sessionStorage.getItem("phone"));
+    const [phone,SetPhone]=useState(sessionStorage.getItem("phone"));     
     const [address,SetAddress]=useState(sessionStorage.getItem("address"));
     const [email,SetEmail]=useState(sessionStorage.getItem("email"));
     const [gender,Setgender]=useState(sessionStorage.getItem("gender"));
-    const [state,Setstate]=useState("0")
 
 
-    const [CIN_No,SetCin]=useState(sessionStorage.getItem("CIN_No"));
+
+    const [CIN_No,SetCin]=useState(sessionStorage.getItem("CIN_No"));    
     const [desc,SetDesc]=useState(sessionStorage.getItem("desc"));
     
 
@@ -23,7 +23,7 @@ export default function Update() {
         if(sessionStorage.getItem("userValue")==="Employee"){
             sessionStorage.setItem("username",username);
             sessionStorage.setItem("age",age);
-            sessionStorage.setItem("phone",phone);
+            sessionStorage.setItem("phone",phone);                          //API for Employee Profile update  datas are in the variable itself
             sessionStorage.setItem("address",address);
             sessionStorage.setItem("email",email);
             sessionStorage.setItem("gender",gender);
@@ -33,9 +33,9 @@ export default function Update() {
         else{
             sessionStorage.setItem("username",username);
             sessionStorage.setItem("CIN_No",CIN_No);
-            sessionStorage.setItem("phone",phone);
+            sessionStorage.setItem("phone",phone);                             //Set session storage as well also you can set the session storage from API to check
             sessionStorage.setItem("address",address)
-            sessionStorage.setItem("email",email);
+            sessionStorage.setItem("email",email);                          //API for Compnies Profile update
             sessionStorage.setItem("desc",desc);
         }
         //API for Update

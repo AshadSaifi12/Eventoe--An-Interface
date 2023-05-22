@@ -12,6 +12,8 @@ function Signup() {
   var [startDate, setstartDate] = useState();
   var [endDate, setendDate] = useState();
   var [amountPaid, setAmountPaid] = useState(0);
+  var [aboutJob,setAboutJob]=useState("");
+  var [jobAddress,setjobAddress]=useState("");
   var [inputWorkName, setInputWorkName] = useState("");
 
   var [workDetail, setWorkDetail] = useState([]);
@@ -26,6 +28,8 @@ function Signup() {
   var [f2, setf2] = useState(false);
   var [f3, setf3] = useState(false);
   var [f4, setf4] = useState(false);
+  var [f5, setf5] = useState(false);
+  var [f6, setf6] = useState(false);
 
   const navigate = useNavigate();
   
@@ -87,10 +91,6 @@ function Signup() {
     {
       label: "choreographer",
       value: "choreographer"
-    },
-    {
-      label: "video editor",
-      value: "video editor"
     },
     {
       label: "video editor",
@@ -160,32 +160,47 @@ function Signup() {
     jobName = workValue;
     if (workValue === "other") {
       jobName = inputWorkName;
-
+  
     }
-
-    if (startDate[8] + startDate[9] <= endDate[8] + endDate[9] && startDate[5] + startDate[6] <= endDate[5] + endDate[6]) {
-      setWorkDetail(workDetail => [...workDetail, { workName: jobName, days: days, startDate: startDate, endDate: endDate, amountPaid: amountPaid,isExpired:false }])
-      setSelectedOption(false)
-      if (workValue === "other") {
-        setInputWorkName("");
-        setShowInputBox(false);
+  
+    if ((startDate[8] + startDate[9] <= endDate[8] + endDate[9] && startDate[5] + startDate[6] == endDate[5] + endDate[6]) || startDate[5] + startDate[6] < endDate[5] + endDate[6]) {
+      
+      var diff = Math.abs(new Date(startDate) - new Date(endDate)) 
+      var dayDiff = diff/(1000 * 3600 * 24)
+  
+      if (new Date(startDate) < d || dayDiff != days) {
+  
+        alert("Invalid! startDate / select correct no. of days.")
       }
-      setWorkValue("select work");
-      setFlag(false)
-      setWorkValueList(workValueList => [...workValueList, workValue]);
+      else {
+  
+
+        setWorkDetail(workDetail => [...workDetail, { workName: jobName, days: days,
+          startDate: startDate, endDate: endDate, amountPaid: amountPaid,jobAddress:jobAddress, aboutJob:aboutJob,isExpired:false }])
+        setSelectedOption(false)
+        if (workValue === "other") {
+          setInputWorkName("");
+          setShowInputBox(false);
+        }
+        setWorkValue("select work");
+        setFlag(false)
+        setWorkValueList(workValueList => [...workValueList, workValue]);
+      }
+  
     }
     else {
       alert("please select valid Dates")
-    }
-
+      }
+  
+  
 
 
   }
 
 
   useEffect(() => {
-    console.log(flag, f1, f2, f3, f4)
-    if (f1 === true && f2 === true && f3 === true && f4 === true) {
+    console.log(flag, f1, f2, f3, f4,f5,f6)
+    if (f1 === true && f2 === true && f3 === true && f4 === true && f5===true && f6===true) {
       setFlag(true)
       console.log(flag, f1, f2, f3, f4)
 
@@ -194,6 +209,8 @@ function Signup() {
       setf2(false)
       setf3(false)
       setf4(false)
+      setf5(false)
+      setf6(false)
     }
 
   });
@@ -476,12 +493,25 @@ function Signup() {
                 }} required />
                 <br />
                 <label htmlFor="">Employee Paid By : </label>
-                <input type="number" name="amountPaid" id="" onChange={(e) => {
+                <input type="text" name="amountPaid" id="" onChange={(e) => {
                   setAmountPaid(e.target.value)
                   setf4(true)
                 }} required />
+                <br /><label htmlFor="">Address of Job : </label>
+                <textarea type="text" name="jobAddress" id="" onChange={(e) => {
+                  setjobAddress(e.target.value)
+                  setf5(true)
+                }} required />
                 <br />
-                <button disabled={!flag} onClick={saveJobData}>Add</button></form>
+                <label htmlFor="">About Job : </label>
+                <textarea type="text" name="aboutJobs" id="" onChange={(e) => {
+                  setAboutJob(e.target.value)
+                  setf6(true)
+                }} required />
+                <br />
+                
+                <button disabled={!flag} onClick={saveJobData}>Add</button>
+               </form>
             </div>
             }
 

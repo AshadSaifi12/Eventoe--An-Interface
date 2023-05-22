@@ -21,15 +21,16 @@ form{
 }
 .login-div{
     width: 400px;
-display: flex;
-position: relative;
-left: 70%;
-top: 40vh;
-z-index: 1;
-border-radius: 10px;
-flex-direction: column;
-border: solid 1px white;
-background-color: white;
+    display: flex;
+    position: relative;
+    left: 70%;
+    margin-right: 10vh;
+    top: 40vh;
+    z-index: 1;
+    border-radius: 10px;
+    flex-direction: column;
+    border: solid 1px white;
+    background-color: white;
 }
 .form-ele{
     font-size: larger;

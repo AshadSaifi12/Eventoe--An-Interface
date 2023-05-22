@@ -44,7 +44,19 @@ const ComSchema = new mongoose.Schema(
             amountPaid:{
               type:String,
               required:true
-            }
+            },
+            jobAddress:{
+              type:String,
+              required:true
+            },
+          aboutJob:{
+              type:String,
+              required:true
+          },
+          isExpired:{
+            type:Boolean,
+            required:true
+        }
 
         }
     ],

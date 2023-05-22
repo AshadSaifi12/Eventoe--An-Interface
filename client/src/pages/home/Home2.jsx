@@ -1,14 +1,14 @@
-import "./navbar1.css"
+import "./css/navbar1.css"
 import "../login/login.css"
-import Image1 from "./HomeBefore.jpg"
-import Image2 from "./HomeBefore1.jpg"
-import address from "./address.jpg"
-import inquiry from "./Inquiry.jpg"
-import call from "./Call.jpg"
-import timings from "./timings.jpg"
+import Image1 from "./img/HomeBefore.jpg"
+import Image2 from "./img/HomeBefore1.jpg"
+import address from "./img/address.jpg"
+import inquiry from "./img/Inquiry.jpg"
+import call from "./img/Call.jpg"
+import timings from "./img/timings.jpg"
 import React from 'react'
 import { Link } from 'react-router-dom'
-import "./HomeBefore.css"
+import "./css/HomeBefore.css"
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,22 +16,59 @@ const Home2 =()=>{
 
     const [name,setName]=useState("")
     const [email,setEmail]=useState("")
-    const [number,setNumber]=useState()
+    const [number,setNumber]=useState(0)
     const [message,setMessage]=useState("")
     var [IsLogin,setIsLogin] = useState(0)
 
-    const HandleSubmit=()=>{
-        let arr1=[name,email,number,message]   //You can use it to Push to backend
-        if (name==="" || email==="" || number===undefined || message===""){
-            alert("Please fill all details!!")
-        }else{
-            const message1="Your Details are , Name: " + name + 
-            " , Email: " + email + " , Your Contact Number " + number + " , Message: " + message +    // From here Contact data should be received and be analyzed by admin account. in backend
-             " !!!Thanks for your Interest @!!! We will reach you ASAP , Be Connected with us...";
-            alert(message1)
+    const HandleSubmit= async ()=>{
+        
+        // console.log(e.target.gender.value+ " sadssdsds")
+        if (name==="" || email==="" || number===null || message==="") {
+          return alert("Please fill all details")
         }
+        else{
+          await fetch("/auth/querySave", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              "Name": name,
+              "email":email,
+              "phone": number,
+              "message":message
+            })
+          }).then(result => {
+            console.log("result : ", result);
+            if (result.status !== 200) {
+              alert("something Went wrong")
+            }
+            else {
+                alert("Hii "+ name + " Query Submitted Successfully !!!Thanks for your Interest @!!! We will reach you ASAP , Be Connected with us...")
+            }
+            return result.json();
+          }).then(res => {
+            console.log("res : ", res);
+          })
+        }
+        
+        //You can use it to Push to backend
                             
     }
+
+
+
+
+
+
+
+        
+
+
+
+
+
 
     const HandleIsLogin=()=>{
         IsLogin=IsLogin+1;

@@ -3,6 +3,7 @@
   width: 100%;
   background-color: #003580;
   display: flex;
+  position: fixed;
   justify-content: space-between;
 }
 
@@ -32,7 +33,7 @@
 #logout2{
   color: #003580;
   text-decoration: none;
-  padding: 9px;
+  padding: 9 px;
   font-size: larger;
   border-radius: 5px;
   border: solid 1px black;
@@ -40,6 +41,7 @@
   background-color: white;
   margin-right: 2vw;
   margin-top: 2vh;
+  padding: 4px;
 }
 
 .endL{

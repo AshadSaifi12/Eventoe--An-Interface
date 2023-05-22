@@ -5,6 +5,7 @@
 #signup-heading, .signup-div{
     text-align: center;
     padding: 1vh;
+    padding-top: 9vh;
 }
 .inner-emp-form{
     display: block;
@@ -31,7 +32,7 @@
     padding: 6px;
 }
 .inner-emp-form >form > input{
-    width: 75%;
+    width: 98%;
     height: 21px;
     border-radius: 12px;
 }
@@ -67,3 +68,6 @@
     margin: 5px;
 }
 
+.jobDetail input,label,textarea,button{
+    margin-top: 2vh;
+}
