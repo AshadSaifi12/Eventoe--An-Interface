@@ -55,6 +55,9 @@ font-size: 40px;
 .detailContactIn{
     display: flex;
     margin-left: 14vh;
+    margin-bottom: 5vh;
+    height: 10vh;
+    width: 25vw;
 }
 .formContact input{
     width: 29vw;
