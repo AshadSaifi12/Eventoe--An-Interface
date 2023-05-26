@@ -392,9 +392,10 @@ function Signup() {
   return (
     <div>
       <Navbar/>
-      <h1 id='signup-heading'>Eventoe Signup</h1>
+      
       <br />
       <div className="signup-div">
+      <h1 id='signup-heading'>Eventoe Signup</h1>
         <select value={userValue} onChange={handleChange}>
           {options.map((option) => (
             <option value={option.value}>{option.label}</option>
@@ -407,7 +408,7 @@ function Signup() {
         <div className="inner-emp-form">
 
           <div className="signup-header">
-            <span>Employee Signup page</span>
+            <span >Employee Signup page</span>
           </div>
           <form method="POST" onSubmit={handleFormData} >
             <label htmlFor="">Enter your name</label><br /><br />
@@ -417,7 +418,7 @@ function Signup() {
             <label htmlFor="">Enter Mobile No.</label><br /><br />
             <input type="text" name="phone" id="" required /><br /><br />
             <label htmlFor="">Address</label><br /><br />
-            <input type="text" name="address" id="" required /><br /><br />
+            <textarea type="text" name="address" id="" required /><br /><br />
             <label htmlFor="">Gender</label><br /><br />
             <select name="gender" id="" required>
               <option value="">Select your gender</option>
@@ -453,7 +454,7 @@ function Signup() {
             <label htmlFor="">Description</label><br /><br />
             <textarea name="desc" id="" cols="57" rows="10" ></textarea><br /><br />
             <label htmlFor="">Office Address</label><br /><br />
-            <input type="text" name="address" id="" required /><br /><br />
+            <textarea type="text" name="address" id="" required /><br /><br />
             <label htmlFor="">Available work</label><br /><br />
 
             <select name='work' value={workValue} onChange={handleChangeWork}>

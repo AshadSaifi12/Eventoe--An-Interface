@@ -26,31 +26,32 @@ const Home2 =()=>{
         if (name==="" || email==="" || number===null || message==="") {
           return alert("Please fill all details")
         }
-        else{
-          await fetch("/auth/querySave", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-              "Name": name,
-              "email":email,
-              "phone": number,
-              "message":message
-            })
-          }).then(result => {
-            console.log("result : ", result);
-            if (result.status !== 200) {
-              alert("something Went wrong")
-            }
-            else {
-                alert("Hii "+ name + " Query Submitted Successfully !!!Thanks for your Interest @!!! We will reach you ASAP , Be Connected with us...")
-            }
-            return result.json();
-          }).then(res => {
-            console.log("res : ", res);
-          })
+        // else{
+        // //   await fetch("/auth/querySave", {
+        // //     method: "POST",
+        // //     headers: {
+        // //       "Content-Type": "application/json",
+        // //       'Accept': 'application/json'
+        // //     },
+        // //     body: JSON.stringify({
+        // //       "Name": name,
+        // //       "email":email,
+        // //       "phone": number,
+        // //       "message":message
+        // //     })
+        // //   }).then(result => {
+        // //     console.log("result : ", result);
+        //     // if (result.status !== 200) {
+        //     //   alert("something Went wrong")
+        //     // }
+           
+        //     // return result.json();
+        // //   }).then(res => {
+        // //     console.log("res : ", res);
+        // //   })
+        // }
+        else {
+            alert("Hii "+ name + " Query Submitted Successfully !!!Thanks for your Interest @!!! We will reach you ASAP , Be Connected with us...")
         }
         
         //You can use it to Push to backend
@@ -287,9 +288,12 @@ const Home2 =()=>{
                         </p>
                         </div>
                     </div>
-                    <div className="detailContactIn">
+                    
+                </div>
+                <div className="formContact">
+                <div className="detailContactIn">
                     <img src={call}/>
-                    <div className="detailContactInText"><h1>Call Us</h1><br/>
+                    <div className="detailContactInText2"><h1>Call Us</h1><br/>
                         <p>+91-960219****<br/>
 +91-960219****<br/>
 0291-294****
@@ -298,21 +302,10 @@ const Home2 =()=>{
                     </div>
                     <div className="detailContactIn">
                     <img src={timings}/>
-                    <div className="detailContactInText"><h1>Our Timing</h1><br/>
+                    <div className="detailContactInText2"><h1>Our Timing</h1><br/>
                         <p>Mon - Sun : 09:00 AM - 09:00 PM</p>
                         </div>
                     </div>
-                </div>
-                <div className="formContact">
-                    <b><label>Your Name</label></b><br/>
-                    <input type="text" value={name} onChange={(e)=>{setName(e.target.value)}} ></input><br/>
-                    <b><label>Your Email</label></b><br/>
-                    <input type="text" value={email}  onChange={(e)=>{setEmail(e.target.value)}} ></input><br/>
-                    <b><label>Contact Number</label></b><br/>
-                    <input type="text" value={number} onChange={(e)=>{setNumber(e.target.value)}} ></input><br/>
-                    <b><label>Message</label></b><br/>
-                    <input type="text" value={message} onChange={(e)=>{setMessage(e.target.value)}} ></input><br/>
-                    <button onClick={()=>{HandleSubmit()}}> Submit</button>
                 </div>
             </div>
         

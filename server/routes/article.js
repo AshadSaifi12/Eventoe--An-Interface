@@ -1,5 +1,5 @@
 import express from "express";
-import {createArticle,deleteArticle,getAllArticle, updateArticle} from "../controllers/article.js";
+import {createArticle,deleteArticle,getAllArticle, getArticles, updateArticle} from "../controllers/article.js";
 
 const router = express.Router();
 
@@ -18,6 +18,8 @@ router.get("/findAll",getAllArticle);
 // Delete 
 router.delete("/delete/:id",deleteArticle)
 
+// get required articles
+router.get("/getArticles",getArticles);
 
 export default router;
 

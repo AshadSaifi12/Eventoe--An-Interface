@@ -55,26 +55,34 @@ export default function Update() {
                 <hr />
             <div className="form">
                 <div className="Names">
-                        <div><label htmlFor="">Username</label><br/></div>
+                        <div className="InputFields"><label htmlFor="">Username</label><br/>
+                        <input type="text" name="" value={username} onChange={(e)=>{SetUsername(e.target.value)}} id="" />
+                        </div>
                         
-                       <div> <label htmlFor="">Age</label><br/></div>
+                       <div className="InputFields"> <label htmlFor="">Age</label><br/>
+                       <input type="text" name="" value={age} onChange={(e)=>{Setage(e.target.value)}} id="" />
+                       </div>
     
-                        <div><label htmlFor="">Mobile No.</label><br/></div>
+                        <div className="InputFields"><label htmlFor="">Mobile No.</label><br/>
+                        <input type="text" name="" value={phone} onChange={(e)=>{SetPhone(e.target.value)}} id="" />
+                        </div>
     
-                     <div>   <label htmlFor="">Address</label><br/></div>
+                     <div className="InputFields">   <label htmlFor="">Address</label><br/>
+                     <textarea type="text" name="" value={address} onChange={(e)=>{SetAddress(e.target.value)}} id="" />
+                     </div>
     
-                       <div> <label htmlFor="">Registered Email Id</label><br/></div>
+                       <div className="InputFields"> <label htmlFor="">Registered Email Id</label><br/>
+                       <input type="text" name="" value={email} onChange={(e)=>{SetEmail(e.target.value)}} id="" />
+                       </div>
     
-                        <div><label htmlFor="">Gender</label><br/></div>
+                        <div className="InputFields"><label htmlFor="">Gender</label><br/>
+                        <select type="text" name="" value={gender} onChange={(e)=>{Setgender(e.target.value)}} id="" >
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        </div>
                 </div>
-                <div className="InputFields">
-                        <input type="text" name="" value={username} onChange={(e)=>{SetUsername(e.target.value)}} id="" /><br/>
-                        <input type="text" name="" value={age} onChange={(e)=>{Setage(e.target.value)}} id="" /><br/>
-                        <input type="text" name="" value={phone} onChange={(e)=>{SetPhone(e.target.value)}} id="" /><br/>
-                        <input type="text" name="" value={address} onChange={(e)=>{SetAddress(e.target.value)}} id="" /><br/>
-                        <input type="text" name="" value={email} onChange={(e)=>{SetEmail(e.target.value)}} id="" /><br/>
-                        <input type="text" name="" value={gender} onChange={(e)=>{Setgender(e.target.value)}} id="" /><br/>
-                </div>
+               
             
             </div>
             
@@ -97,28 +105,32 @@ export default function Update() {
             <div className="form">
                 <div className="Names">
 
-                        <div><label htmlFor="">Organization Name</label><br/></div>
+                        <div  className="InputFields"><label htmlFor="">Organization Name</label><br/>
+                        <input type="text" name="" value={username} onChange={(e)=>{SetUsername(e.target.value)}} id="" />
+                        </div>
 
-                        <div>  <label htmlFor="">CIN No.</label><br/></div>
+                        <div  className="InputFields">  <label htmlFor="">CIN No.</label><br/>
+                        <input type="text" name="" value={CIN_No} onChange={(e)=>{SetCin(e.target.value)}} id="" /></div>
 
-                        <div> <label htmlFor="">Contact No.</label><br/></div>
+                        <div  className="InputFields"> <label htmlFor="">Contact No.</label><br/>
+                        <input type="text" name="" value={phone} onChange={(e)=>{SetPhone(e.target.value)}} id="" />
+                        </div>
 
-                        <div> <label htmlFor="">Address</label><br/></div>
+                        <div  className="InputFields"> <label htmlFor="">Address</label><br/>
+                        <input type="text" name="" value={address} onChange={(e)=>{SetAddress(e.target.value)}} id="" />
+                        </div>
 
-                        <div> <label htmlFor="">Registered Email Id</label><br/></div>
+                        <div  className="InputFields"> <label htmlFor="">Registered Email Id</label><br/>
+                        <input type="text" name="" value={email} onChange={(e)=>{SetEmail(e.target.value)}} id="" />
+                        </div>
 
-                        <div> <label id='desc' htmlFor="">Description</label><br/></div>
+                        <div  className="InputFields"> 
+                        <label  htmlFor="">Description</label><br/>
+                        <textarea type="text" id="textarea" value={(desc)} onChange={(e)=>{(SetDesc(e.target.value))}} cols={57} name="desc"  ></textarea>
+                        </div>
                        
                 </div>
-                <div className="InputFields">
-                        <div><input type="text" name="" value={username} onChange={(e)=>{SetUsername(e.target.value)}} id="" /><br /></div>
-                       <div> <input type="text" name="" value={CIN_No} onChange={(e)=>{SetCin(e.target.value)}} id="" /><br /></div>
-                        <div><input type="text" name="" value={phone} onChange={(e)=>{SetPhone(e.target.value)}} id="" /><br /></div>
-                        <div><input type="text" name="" value={address} onChange={(e)=>{SetAddress(e.target.value)}} id="" /><br /></div>
-                        <div><input type="text" name="" value={email} onChange={(e)=>{SetEmail(e.target.value)}} id="" /><br /></div>
-                        <div><textarea type="text" id="textarea" value={(desc)} onChange={(e)=>{(SetDesc(e.target.value))}} cols={57} name="desc"  ></textarea><br /></div>
-
-                </div>
+               
             
             </div>
             </div>

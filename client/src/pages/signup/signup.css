@@ -2,15 +2,15 @@
     margin: 0px;
     padding: 0px;
 }
-#signup-heading, .signup-div{
+#signup-heading, .signup-div ,.signup-div input{
     text-align: center;
     padding: 1vh;
-    padding-top: 9vh;
+
 }
 .inner-emp-form{
     display: block;
     margin: auto;
-    width: 600px;
+    width: 60%;
     border: solid 1px black;
     border-radius: 5px;
 }
@@ -31,9 +31,17 @@
     color: white;
     padding: 6px;
 }
-.inner-emp-form >form > input{
+#signup-heading{
+   margin-top: 9vh;
+}
+.inner-emp-form >form > input,textarea{
     width: 98%;
     height: 21px;
+    border-radius: 12px;
+}
+.inner-emp-form >form >textarea{
+    width: 98%;
+    height: 5vh;
     border-radius: 12px;
 }
 .inner-emp-form >form{

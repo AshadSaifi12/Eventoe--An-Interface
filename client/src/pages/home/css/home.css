@@ -1,3 +1,5 @@
+
+
 *{
     margin: 0px;
     padding: 0px;
@@ -5,6 +7,9 @@
 .container{
     display: flex;
     
+}
+#root{
+    overflow: scroll;
 }
 .sec1{
     flex-basis: 20%;
@@ -152,7 +157,9 @@ margin-top: 9vh;
     margin: 3px;
     margin-top: 40px;
     border: solid 1.0px #003580;
+    border-radius:1px ;
 
+    overflow: scroll;
 
     justify-content: space-around;
 }
@@ -167,41 +174,82 @@ label{
     margin-left: 10px;
 }
 .first{
+    font-size: larger;
     display: flex;
-    margin-top: 2vh;
+    margin-left: 1vh;
 }
 .first label{
     padding-right: 1vh;
     
 }
 .first input{
-    padding-right: 1vh;
+    /* padding-right: 1vh; */
     margin-top: 1vh;
+    margin-inline:1vh;
+    padding-right: 10vh;
+    pointer-events: none;
+    font-size: 15px;
+    width: 50%;
     
 }
 .second textarea{
     padding-right: 1vh;
     margin-top: 1vh;
+    pointer-events:none;
+    font-size: 15px;
+    padding-left: 1vh;
+  width: 90%;
 }
-.second input{
-   
-    margin-top: 2vh;
-    
-}
+
 .second{
     margin-top: 1vh;
     display: flex;
-    margin-inline: 1vh;
+    margin-left: 1vh;
+    margin-bottom: 1vh;
+    font-size: larger;
 }
 .second div{
     display: inline;
-    padding-inline: 22px;
+    padding-inline: 10px;
     margin-top: 2vh;
+    width: 50%;
 }
 .first div{
-    padding-bottom: 12px;
-    padding-left: 21px;
+    display: inline;
+    padding-inline: 10px;
+    margin-top: 2vh;
+    width: 25%;
+
 }
 #isExpired{
-    padding-left: 90%;
+    margin-left: 2vh;
+    margin-top: 1vh;
+}
+
+.Concern{
+   width: 100%;
+   align-items: center;
+}
+.Concern h3{
+     
+    margin-left: 11vh;
+    margin-right: 4vh;
+    margin-top:3vh;
+    font-size: larger;
+    
+}
+.Concern textarea{
+    width: 80%;
+    height: 40%;
+    margin: 2vh;
+    
+}
+
+.Concern button{
+    padding-left: 1vh;
+    padding-right: 1vh;
+    
+    margin-left: 38%;
+    margin-right: 4vh;
+    margin-top: 1vh;
 }

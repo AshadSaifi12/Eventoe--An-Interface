@@ -40,7 +40,7 @@ function Navbar(props) {
                     <li><Link style={{ color: '#FFF', textDecoration: 'none' }} to="/">Home</Link></li>
                 </ul>
                 <div >
-                    <Link id="logout" style={{ color: '#FFF', textDecoration: 'none' }} to="/" >Login</Link>
+                    <Link id="logout" style={{ color : "#003580", backgroundColor: "white", textDecoration: 'none' }} to="/" >Login</Link>
                     
                 </div>
             </div>

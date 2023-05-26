@@ -44,3 +44,52 @@ export const deleteArticle = async (req, res, next) => {
     next(err);
   }
 };
+export const getArticles = async (req, res, next) => {
+
+  try {
+    const articles = await Article.find();
+    var newArticles = [];
+    var value = req.query.value;
+    var searchBy = req.query.searchBy;
+    if (searchBy == "Company Name") {
+      for (var article of articles) {
+        if (article.name.toLowerCase().match(value)) {
+          newArticles.push(article);
+        }
+      }
+    }
+    else if (searchBy == "Job Name") {
+      for (var article of articles) {
+        for (var job of article.jobs) {
+          if (job.workName.toLowerCase().match(value)) {
+            newArticles.push(article);
+            break;
+          }
+        }
+      }
+    }
+    else if (searchBy == "Job Address") {
+      for (var article of articles) {
+        for (var job of article.jobs) {
+          if (job.jobAddress.toLowerCase().match(value)) {
+            newArticles.push(article);
+            break;
+          }
+        }
+      }
+    }
+    else if (searchBy == "Company Address") {
+      for (var article of articles) {
+        if (article.address.toLowerCase().match(value)) {
+          newArticles.push(article);
+        }
+      }
+    }
+
+
+    console.log(newArticles);
+    res.status(200).json(newArticles);
+  } catch (err) {
+    next(err);
+  }
+};
