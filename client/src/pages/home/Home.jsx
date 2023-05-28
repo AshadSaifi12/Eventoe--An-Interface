@@ -246,6 +246,13 @@ function Home() {
                     {toggle && article.jobs.map(job => (
                       job.workName === articleName &&
                       <div className="aboutJob">
+                        <div className="isExpired" id="isExpired">
+                          <h3 id="h3" >{job.isExpired}</h3>
+                          <br />
+
+
+
+                        </div>
                         <div className='first'>
                           <div className="days">
                             <label htmlFor="">For Days </label>
@@ -283,13 +290,7 @@ function Home() {
                         </div>
 
 
-                        <div className="isExpired" id="isExpired">
-                          <h3 id="h3" >{job.isExpired}</h3>
-                          <br />
-
-
-
-                        </div>
+                        
 
 
                       </div>
